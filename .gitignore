@@ -59,3 +59,7 @@ typings/
 
 # web apidocs generated
 webApidoc/
+.vscode/launch.json
+
+# data
+data/

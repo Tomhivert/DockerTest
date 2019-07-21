@@ -13,6 +13,6 @@ var router = express.Router();
 
 var postRoutes = require('./postRoutes.js');
 
-router.use('/user', postRoutes);
+router.use('/post', postRoutes);
 
 module.exports = router;

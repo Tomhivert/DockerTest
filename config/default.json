@@ -7,7 +7,7 @@
             "user" : "",
             "password" : "",
             "port" : "27017",
-            "database" : "DB_Name"
+            "database" : "Way2Vat"
         },
         "currentVersion" : 1
     }

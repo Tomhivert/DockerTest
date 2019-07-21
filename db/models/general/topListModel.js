@@ -9,8 +9,13 @@ require('mongoose-type-url'); // for url types
 
 var Schema = mongoose.Schema;
 
-var Post = new Schema(
+var TopList = new Schema(
 {
+    post_ref:{
+        type: Schema.Types.ObjectId,
+        ref: 'post',
+        required: true
+    },
     title: {
         type: String
     },
@@ -32,10 +37,10 @@ var Post = new Schema(
 
 
 
-Post.set('toJSON', {
+TopList.set('toJSON', {
     transform: function(doc, ret, options) {
         return ret;
     }
 });
 
-module.exports = mongoose.model('Post', Post);
+module.exports = mongoose.model('TopList', TopList);
