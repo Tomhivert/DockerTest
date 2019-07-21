@@ -34,7 +34,7 @@ function addPost(title, body, cb) {
             cb(err);
         } else {
             var replacementPost = new TopList();
-            replacementPost.score = calculateScore(savedPost.votes, savedPost.createdAt);
+            replacementPost.score = calculateScore(savedPost.votes);
             replacementPost.title = savedPost.title;
             replacementPost.body = savedPost.body;
             replacementPost.votes = savedPost.votes;
