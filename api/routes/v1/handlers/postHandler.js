@@ -33,7 +33,7 @@ function addPost(title, body, cb) {
         if (err) {
             cb(err);
         } else {
-            var replacementPost = {};
+            var replacementPost = new TopList();
             replacementPost.score = calculateScore(savedPost.votes, savedPost.createdAt);
             replacementPost.title = savedPost.title;
             replacementPost.body = savedPost.body;
@@ -44,7 +44,7 @@ function addPost(title, body, cb) {
                 "score": { $lt: savedPost.score }
             }, 
             replacementPost,
-            { upsert : true, returnNewDocument: true },
+            { upsert : false, returnNewDocument: false },
             function(err, returnedPost) {
                 if (err) {
                     cb(err);
@@ -105,7 +105,7 @@ function votePost(post_id, value, cb) {
                     console.log("error updating post in DB. Message: " + err.message);
                     return cb(err);
                 } else if (updatedPost != null && updatedPost != undefined){
-                    var replacementPost = {};
+                    var replacementPost = new TopList();
                     replacementPost.score = updatedPost.score;
                     replacementPost.title = updatedPost.title;
                     replacementPost.body = updatedPost.body;
@@ -136,10 +136,12 @@ function votePost(post_id, value, cb) {
 }
 
 function calculateScore(votes, timestamp) {
-    var startingScore = 5;
-    var timeDifference = Date.now() - timestamp;
+    var score = 5;
+    if(timestamp != null && timestamp != undefined){
+        var timeDifference = Date.now() - timestamp;
 
-    var score = ((votes + startingScore) / (1 + timeDifference)) * 1000 * 3600;
+        score = ((votes + 5) / (1 + timeDifference)) * 1000 * 3600; 
+    }
     return score;
 }
 
