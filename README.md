@@ -13,4 +13,4 @@ In my algorithm, for a post to keep a high score and stay at the top of the list
 scores are recalculated upon upvoting/downvoting any post, or creating a new post.
 
 My top 10 list, comprises of entries that keep an instance of the original post, with the score and votes values.
-every time a post is created or an upvote/downvote is made, the new/updated post's score get's compared with the top 10 list, and replaced with the one with the lowest score.
+every time a post is created or an upvote/downvote is made, the new/updated post's score get's compared with the top 10 list, and if the score is higher, replaced with the one with the lowest score.
